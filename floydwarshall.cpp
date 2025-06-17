@@ -9,11 +9,22 @@ int min(int a,int b){
 		return b;
 	}
 }
+void print(int arr[MAX][MAX],int n){
+	for(int j=0;j<n;j++){
+		cout<<j<<"-> ";
+		for(int k=0;k<n;k++){
+			cout<<arr[j][k]<<" ";
+		}
+		cout<<endl;
+	}
+}
 void floyd_warshall(int matrix[MAX][MAX],int n){
 	for(int i=0;i<n;i++){
 		matrix[i][i]=0;
 	}
 	for(int k=0;k<n;k++){
+		cout<<"With parent: "<<k<<endl;
+		print(matrix,n);
 		for(int i=0;i<n;i++){
 			for(int j=0;j<n;j++){
 				if(i!=j && matrix[i][k]!=INF && matrix[k][j]!=INF){
@@ -50,12 +61,5 @@ int main(void){
 		
 	}
 	floyd_warshall(adjmatrix,n);
-	for(int j=0;j<n;j++){
-		cout<<j<<"-> ";
-		for(int k=0;k<n;k++){
-			cout<<adjmatrix[j][k]<<" ";
-		}
-		cout<<endl;
-	}
 	
 }
